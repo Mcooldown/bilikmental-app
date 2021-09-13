@@ -1,23 +1,19 @@
-.type1 {
-     color: #278AFF;
-     border: 1px solid #278AFF;
+.default {
      border-radius: 5px;
-     padding: 5px 15px;
+     padding: 8px 15px;
      transition: 0.2s ease all;
 }
 
-.type1:hover {
+.default:hover {
      transform: scale(1.03);
+}
+
+.type1 {
+     color: #278AFF;
+     border: 1px solid #278AFF;
 }
 
 .type2 {
      color: white;
      background-color: #278AFF;
-     border-radius: 5px;
-     padding: 5px 15px;
-     transition: 0.2s ease all;
-}
-
-.type2:hover {
-     transform: scale(1.03);
 }

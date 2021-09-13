@@ -1,0 +1,25 @@
+.landingWrapper {
+     min-height: 120vh;
+     height: 120vh;
+     background: url('/assets/images/blueCircle.png') no-repeat,
+          url('/assets/images/blueCircle.png') no-repeat,
+          white;
+     background-position: -4% 20%,
+          45% 70%,
+          center center;
+     background-size: 250px, 200px, cover;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+}
+
+.textLanding {
+     font-size: 65px;
+     font-weight: bold;
+     line-height: 1.25;
+}
+
+.titleSection {
+     font-size: 48px;
+     font-weight: bold;
+}

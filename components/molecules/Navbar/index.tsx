@@ -8,39 +8,51 @@ import Button from '../../atoms/Button';
 const Navbar = () => {
 
      const [collapsed, setCollapsed] = useState(true);
-     const [isMobile, setIsMobile] = useState(false);
+     const [isMobile, setIsMobile] = useState(true);
+     const [navbarClassName, setnavbarClassName] = useState('navbar-white');
 
      useEffect(() => {
-          setIsMobile(window.matchMedia('(max-device-width: 576px)').matches ? true : false);
-     }, [])
 
-     const toggleCollapse = () => {
-          setCollapsed(collapsed ? false : true);
-     }
+          async function validateMobile() {
+               return await setIsMobile(window.matchMedia('(max-device-width: 576px)').matches ? true : false);
+          }
+
+          validateMobile().then(() => {
+               if (!isMobile) {
+                    setnavbarClassName('navbar-transparent');
+               }
+
+               document.addEventListener("scroll", () => {
+                    setnavbarClassName(window.scrollY < 50 && !isMobile ? 'navbar-transparent' : 'navbar-white');
+               });
+          })
+
+     }, [isMobile]);
 
      return (
-          <nav className="navbar">
-               <div className="container mx-auto flex items-center justify-between flex-wrap p-3 md:p-4 ">
-                    <div className="flex items-center flex-shrink-0 text-white mr-6">
-                         <Image src="/assets/images/logoOriginal.png" width={130} height={40} />
+          <nav className={styles.navbar + " " + (navbarClassName === 'navbar-white' ? styles.navbarWhite : styles.navbarTransparent) + " fixed w-full"}>
+               <div className="container mx-auto flex items-center justify-between flex-wrap p-3 lg:px-12">
+                    <div className="flex items-center flex-shrink-0 mr-6">
+                         <Image src="/assets/images/logoOriginal.png" width={155} height={50} />
                     </div>
                     <div className="block lg:hidden">
-                         <button className="flex items-center px-3 py-2 border rounded text-gray border-black hover:text-gray hover:border-gray" onClick={toggleCollapse}>
+                         <button className={"flex items-center px-3 py-2 " + styles.hamburger} onClick={() => setCollapsed(collapsed ? false : true)}>
                               <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
                          </button>
                     </div>
                     {
                          (!isMobile || !collapsed) &&
                          <div className="w-full block lg:flex lg:items-center lg:w-auto">
-                              <div className="text-sm lg:flex-grow text-white lg:mr-5">
-                                   <Link href="#"><a href="#" className="block mt-4 lg:inline-block lg:mt-0 text-gray-1 mr-4">Quotes</a></Link>
-                                   <Link href="#"><a href="#" className="block mt-4 lg:inline-block lg:mt-0 text-gray-1 mr-4">Consultation</a></Link>
-                                   <Link href="#"><a href="#" className="block mt-4 lg:inline-block lg:mt-0 text-gray-1 mr-4">Articles</a></Link>
-                                   <Link href="#"><a href="#" className="block mt-4 lg:inline-block lg:mt-0 text-gray-1">Meditation</a></Link>
+                              <div className="text-white lg:flex-grow lg:mr-5">
+                                   <Link href="#"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:mr-4">Quotes</a></Link>
+                                   <Link href="#"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:mr-4">Consultation</a></Link>
+                                   <Link href="#"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:mr-4">Articles</a></Link>
+                                   <Link href="#"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0">Meditation</a></Link>
                               </div>
-                              <div>
+                              <div className="block text-center mt-4 lg:inline-block lg:mr-4 lg:mt-0">
                                    <Button title="Login" type={1} />
-                                   <div className="inline-flex mx-1"></div>
+                              </div>
+                              <div className="block text-center mt-4 lg:inline-block lg:mt-0">
                                    <Button title="Register" type={2} />
                               </div>
                          </div>
