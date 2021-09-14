@@ -1,0 +1,11 @@
+.footerWrapper {
+     background: url('/assets/images/dividerTopBlue.png') no-repeat, white;
+     background-size: 110%, cover;
+     background-position: center top, center center;
+}
+
+.titleFooter {
+     font-size: 28px;
+     font-weight: bold;
+     line-height: 2.25rem;
+}

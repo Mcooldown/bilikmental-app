@@ -88,10 +88,10 @@ const Home: NextPage = () => {
         </div>
       </div>
 
-      <div className={"bg-blue-1 pb-20 pt-5"}>
+      <div className={"bg-blue-1 pb-40 pt-5"}>
         <div className="container mx-auto px-4 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 mt-12 items-center">
-            <div className="col-span-1 lg:order-2">
+            <div className="col-span-1 lg:order-2 flex justify-end">
               <Image src="/assets/images/meditationIllust.png" width={564} height={493} />
             </div>
             <div className="col-span-1 lg:order-1">
