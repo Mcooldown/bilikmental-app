@@ -22,4 +22,28 @@
 .titleSection {
      font-size: 48px;
      font-weight: bold;
+     line-height: 4rem;
+}
+
+.consultSection {
+     background: url('/assets/images/blueCircle.png') no-repeat,
+          url('/assets/images/blueCircle.png') no-repeat,
+          white;
+     background-position: 90% 10%,
+          45% 50%,
+          center center;
+     background-size: 250px,
+          200px,
+          cover;
+}
+
+.articleSection {
+     background: url('/assets/images/blueCircle.png') no-repeat,
+          url('/assets/images/blueCircle.png') no-repeat,
+          linear-gradient(to bottom, white 10%, rgba(166, 207, 255, 0.2),
+               rgb(91, 166, 255),
+               rgb(39, 138, 255)),
+          white;
+     background-position: -5% 0%, 100% 0%, center center, center center;
+     background-size: 250px, 350px, cover, cover;
 }
