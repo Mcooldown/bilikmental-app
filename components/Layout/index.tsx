@@ -1,6 +1,7 @@
 import { Fragment, ReactNode } from "react";
 import Head from "next/head";
 import Navbar from "../molecules/Navbar";
+import Footer from "../molecules/Footer";
 
 interface LayoutProps {
      children: ReactNode;
@@ -19,6 +20,7 @@ const Layout = (props: LayoutProps) => {
                </Head>
                <Navbar />
                {children}
+               <Footer />
           </Fragment>
      )
 }
