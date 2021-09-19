@@ -5,6 +5,8 @@ import styles from '../styles/Home.module.css';
 import Image from 'next/image';
 import QuoteCard from '../components/molecules/QuoteCard';
 import ArticleCard from '../components/molecules/ArticleCard';
+import router from 'next/router';
+import Link from 'next/link';
 
 const Home: NextPage = () => {
   return (
@@ -16,7 +18,7 @@ const Home: NextPage = () => {
               <h1 className={styles.textLanding + " text-dark-1"}>Your mental health, our priority</h1>
               <p className="text-gray-1 my-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Ullam repudiandae libero hic earum pariatur sit tenetur placeat, officia itaque,</p>
-              <Button title="Register Now" type={2} />
+              <Button title="Register Now" type={2} onClick={() => router.push('/register')} isFull={false} />
 
             </div>
             <div className="flex-1 hidden lg:block text-right">
@@ -47,7 +49,7 @@ const Home: NextPage = () => {
           </div>
 
           <div className="flex justify-end mt-6">
-            <p className="text-gray-1">Read more quotes...</p>
+            <Link href="/quotes"><p className="text-gray-1" style={{ cursor: "pointer" }}>Read more quotes...</p></Link>
           </div>
         </div>
       </div>
@@ -61,7 +63,7 @@ const Home: NextPage = () => {
             <div className="col-span-1">
               <h1 className={styles.titleSection + " text-dark-1"}>Let us know your problems</h1>
               <p className="text-gray-1 my-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra tincidunt aliquet eget sit non. Nisl aliquam elementum scelerisque neque hendrerit mauris non non quis. Laoreet sit integer ultrices quis. Arcu neque, aliquet eleifend bibendum viverra.</p>
-              <Button type={2} title="Consult Now" />
+              <Button type={2} title="Consult Now" onClick={() => router.push('/consultation')} isFull={false} />
             </div>
           </div>
         </div>
@@ -83,12 +85,13 @@ const Home: NextPage = () => {
             </div>
           </div>
           <div className="flex justify-end mt-6">
-            <p className="text-white">Read more articles...</p>
+            <Link href="/articles"><p className="text-white" style={{ cursor: "pointer" }}>Read more articles...</p></Link>
+
           </div>
         </div>
       </div>
 
-      <div className={"bg-blue-1 pb-40 pt-5"}>
+      <div className={styles.meditationSection + " pb-52 pt-5"}>
         <div className="container mx-auto px-4 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 mt-12 items-center">
             <div className="col-span-1 lg:order-2 flex justify-end">
@@ -97,7 +100,7 @@ const Home: NextPage = () => {
             <div className="col-span-1 lg:order-1">
               <h1 className={styles.titleSection + " text-white"}>“Meditation is like a gym in which you develop the powerful mental muscles of calm and insight.”</h1>
               <p className="text-white my-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor</p>
-              <Button type={1} title="Join Meditation" />
+              <Button type={1} title="Join Meditation" onClick={() => router.push('/meditation')} isFull={false} />
             </div>
           </div>
         </div>

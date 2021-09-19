@@ -16,7 +16,7 @@ const Layout = (props: LayoutProps) => {
           <Fragment>
                <Head>
                     <title>Bilik Mental | {pageTitle}</title>
-                    <meta name="description" content="Website NextJS Basic" />
+                    <meta name="description" content="BIlik Mental" />
                </Head>
                <Navbar />
                {children}

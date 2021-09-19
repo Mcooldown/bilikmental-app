@@ -7,9 +7,9 @@ import Button from '../../atoms/Button';
 
 const Footer = () => {
      return (
-          <div className={styles.footerWrapper + " pt-36 pb-20"}>
+          <div className={styles.footerWrapper + " pt-10 pb-8"}>
                <div className="container mx-auto px-4 lg:px-12">
-                    <div className="grid lg:grid-cols-11">
+                    <div className="grid lg:grid-cols-11 mb-8">
                          <div className="col-span-4 lg:mr-16">
                               <Image src="/assets/images/logoOriginal.png" width={388} height={121} />
                               <p className="text-gray-1 mt-4">Bilik Mental Tower, Jl. Prof. DR. Vincent Hadinata No.1, Karet Semanggi, Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12950</p>
@@ -38,6 +38,8 @@ const Footer = () => {
                               <Button type={2} title="Register Now" />
                          </div>
                     </div>
+                    <hr />
+                    <p className="text-center text-gray-1 mt-3">Copyright &copy; 2021 Vincent Hadinata</p>
                </div>
           </div >
      )

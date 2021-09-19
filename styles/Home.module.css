@@ -47,3 +47,12 @@
      background-position: -5% 0%, 100% 0%, center center, center center;
      background-size: 250px, 350px, cover, cover;
 }
+
+.meditationSection {
+     background: url('/assets/images/dividerTopBlue.png') no-repeat,
+          rgb(39, 138, 255);
+     background-size: 115%,
+          cover;
+     background-position: center 101%,
+          center center;
+}
