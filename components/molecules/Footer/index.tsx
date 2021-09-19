@@ -4,8 +4,10 @@ import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '../../atoms/Button';
+import router from 'next/router';
 
 const Footer = () => {
+
      return (
           <div className={styles.footerWrapper + " pt-10 pb-8"}>
                <div className="container mx-auto px-4 lg:px-12">
@@ -35,7 +37,7 @@ const Footer = () => {
                          <div className="col-span-3 lg:ml-4">
                               <h1 className={styles.titleFooter + " text-blue-1 mb-5"}>Take care of your
                                    mental from now!</h1>
-                              <Button type={2} title="Register Now" />
+                              <Button type={2} title="Register Now" onClick={() => router.push('/register')} isFull={false} />
                          </div>
                     </div>
                     <hr />
