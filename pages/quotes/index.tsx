@@ -1,3 +1,4 @@
+import router from "next/router";
 import Button from "../../components/atoms/Button";
 import Gap from "../../components/atoms/Gap";
 import Layout from "../../components/Layout";
@@ -53,7 +54,7 @@ const Quotes = () => {
                               <Gap height={40} width={0} />
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
                                    <div className="col-span-1">
-                                        <QuoteCard id="1" quote="Don’t stop when you’re tired. Stop when you’re done." author="Wesley Snipes" />
+                                        <QuoteCard onClick={() => router.push('/quotes/detail')} id="1" quote="Don’t stop when you’re tired. Stop when you’re done." author="Wesley Snipes" />
                                    </div>
                                    <div className="col-span-1">
                                         <QuoteCard id="2" quote="Your time is limited, so don’t waste it living someone els..." author="Steve Jobs" />

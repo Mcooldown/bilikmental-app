@@ -6,6 +6,7 @@ import Input from "../components/atoms/Input";
 import Head from "next/head";
 import Button from "../components/atoms/Button";
 import Link from "next/link";
+import Gap from "../components/atoms/Gap";
 
 const Login = () => {
      return (
@@ -21,20 +22,29 @@ const Login = () => {
                                    <Image src="/assets/images/logoOriginal.png" width={155} height={50} />
                               </div>
                          </Link>
-                         <div className="pt-24 pb-48 flex justify-center">
-                              <div className={styles.cardAuth + " p-10"}>
-                                   <h1 className={styles.textAuth + " mb-2 text-dark-1"}>Login</h1>
-                                   <p className="text-gray-1 mb-10">Not have an account? <Link href="/register"><span className="text-blue-1" style={{ cursor: "pointer" }}>Create an Account</span></Link></p>
+                         <div className={styles.authRowWrapper}>
+                              <div className="grid grid-cols-5 lg:grid-cols-11">
+                                   <div className="col-span-3"></div>
+                                   <div className="col-span-5">
+                                        <div className={styles.cardAuth + " p-10"}>
+                                             <h1 className={styles.textAuth + " text-dark-1"}>Login</h1>
+                                             <Gap height={10} />
+                                             <p className="text-gray-1">Not have an account? <Link href="/register"><span className="text-blue-1" style={{ cursor: "pointer" }}>Create an Account</span></Link></p>
+                                             <Gap height={40} />
 
-                                   <div className="mb-4">
-                                        <Input type="text" label="Email" id="email" name="email" width={400} disabled={false} placeholder="" />
+                                             <Input type="text" label="Email" id="email" name="email" isFull />
+                                             <Gap height={15} />
+                                             <Input type="password" label="Password" id="password" name="password" isFull />
+                                             <Gap height={5} />
+                                             <div className="flex justify-end">
+                                                  <small className="text-gray-1">Forgot your password?</small>
+                                             </div>
+                                             <Gap height={40} />
+                                             <Button type={2} title="Login" onClick={() => { }} isFull={true} />
+                                             <Gap height={15} />
+                                        </div>
                                    </div>
-                                   <Input type="password" label="Password" id="password" name="password" width={400} disabled={false} placeholder="" />
-                                   <div className="flex justify-end mb-10 mt-2">
-                                        <small className="text-gray-1">Forgot your password?</small>
-                                   </div>
-
-                                   <Button type={2} title="Login" onClick={() => { }} isFull={true} />
+                                   <div className="col-span-3"></div>
                               </div>
                          </div>
                     </div>

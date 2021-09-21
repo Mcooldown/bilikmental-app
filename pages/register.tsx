@@ -6,6 +6,7 @@ import Input from "../components/atoms/Input";
 import Head from "next/head";
 import Button from "../components/atoms/Button";
 import Link from "next/link";
+import Gap from "../components/atoms/Gap";
 
 const Register = () => {
      return (
@@ -21,42 +22,43 @@ const Register = () => {
                                    <Image src="/assets/images/logoOriginal.png" width={155} height={50} />
                               </div>
                          </Link>
-                         <div className="pt-24 pb-48 flex justify-center">
-                              <div className={styles.cardAuth + " p-10"}>
-                                   <h1 className={styles.textAuth + " mb-2 text-dark-1"}>Create New Account</h1>
-                                   <p className="text-gray-1 mb-10">Already have an account? <Link href="/login"><span className="text-blue-1" style={{ cursor: "pointer" }}>Login</span></Link></p>
-
-                                   <div className="grid grid-cols-2 gap-3 mb-4">
-                                        <div className="col-span-1">
-                                             <Input type="text" label="First Name" id="firstName" name="firstName" width={193} disabled={false} placeholder="" />
+                         <div className={styles.authRowWrapper}>
+                              <div className="grid grid-cols-5 lg:grid-cols-11">
+                                   <div className="col-span-3"></div>
+                                   <div className="col-span-5">
+                                        <div className={styles.cardAuth + " p-10"}>
+                                             <h1 className={styles.textAuth + " text-dark-1"}>Create New Account</h1>
+                                             <Gap height={10} />
+                                             <p className="text-gray-1">Already have an account? <Link href="/login"><span className="text-blue-1" style={{ cursor: "pointer" }}>Login</span></Link></p>
+                                             <Gap height={40} />
+                                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                                                  <div className="col-span-1">
+                                                       <Input type="text" label="First Name" id="firstName" name="firstName" isFull />
+                                                  </div>
+                                                  <div className="col-span-1">
+                                                       <Input type="text" label="Last Name" id="lastName" name="lastName" isFull />
+                                                  </div>
+                                             </div>
+                                             <Gap height={15} />
+                                             <Input type="text" label="Gender" id="gender" name="gender" isFull />
+                                             <Gap height={15} />
+                                             <Input type="text" label="Date of Birth" id="dateOfBirth" name="dateOfBirth" isFull />
+                                             <Gap height={15} />
+                                             <Input type="text" label="Address" id="address" name="address" isFull />
+                                             <Gap height={15} />
+                                             <Input type="text" label="Phone Number" id="phoneNumber" name="phoneNumber" isFull />
+                                             <Gap height={15} />
+                                             <Input type="text" label="Email" id="email" name="email" isFull />
+                                             <Gap height={15} />
+                                             <Input type="password" label="Password" id="password" name="password" isFull />
+                                             <Gap height={15} />
+                                             <Input type="password" label="Confirm Password" id="confirmPassword" name="confirmPassword" isFull />
+                                             <Gap height={40} />
+                                             <Button type={2} title="Create New Account" onClick={() => { }} isFull={true} />
+                                             <Gap height={15} />
                                         </div>
-                                        <div className="col-span-1">
-                                             <Input type="text" label="Last Name" id="lastName" name="lastName" width={193} disabled={false} placeholder="" />
-                                        </div>
                                    </div>
-                                   <div className="mb-4">
-                                        <Input type="text" label="Gender" id="gender" name="gender" width={400} disabled={false} placeholder="" />
-                                   </div>
-                                   <div className="mb-4">
-                                        <Input type="text" label="Date of Birth" id="dateOfBirth" name="dateOfBirth" width={400} disabled={false} placeholder="" />
-                                   </div>
-                                   <div className="mb-4">
-                                        <Input type="text" label="Address" id="address" name="address" width={400} disabled={false} placeholder="" />
-                                   </div>
-                                   <div className="mb-4">
-                                        <Input type="text" label="Phone Number" id="phoneNumber" name="phoneNumber" width={400} disabled={false} placeholder="" />
-                                   </div>
-                                   <div className="mb-4">
-                                        <Input type="text" label="Email" id="email" name="email" width={400} disabled={false} placeholder="" />
-                                   </div>
-                                   <div className="mb-4">
-                                        <Input type="password" label="Password" id="password" name="password" width={400} disabled={false} placeholder="" />
-                                   </div>
-                                   <div className="mb-10">
-                                        <Input type="password" label="Confirm Password" id="confirmPassword" name="confirmPassword" width={400} disabled={false} placeholder="" />
-                                   </div>
-
-                                   <Button type={2} title="Create New Account" onClick={() => { }} isFull={true} />
+                                   <div className="col-span-3"></div>
                               </div>
                          </div>
                     </div>
