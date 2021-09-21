@@ -20,7 +20,7 @@ const Navbar = () => {
           }
 
           validateMobile().then(() => {
-               if (!isMobile) {
+               if (!isMobile && router.pathname === '/') {
                     setnavbarClassName('navbar-transparent');
                }
 
@@ -34,9 +34,11 @@ const Navbar = () => {
      return (
           <nav className={styles.navbar + " " + (navbarClassName === 'navbar-white' ? styles.navbarWhite : styles.navbarTransparent) + " fixed w-full"}>
                <div className="container mx-auto flex items-center justify-between flex-wrap p-3 lg:px-12">
-                    <div className="flex items-center flex-shrink-0 mr-6">
-                         <Image src="/assets/images/logoOriginal.png" width={155} height={50} />
-                    </div>
+                    <Link href="/">
+                         <div className="flex items-center flex-shrink-0 mr-6" style={{ cursor: "pointer" }}>
+                              <Image src="/assets/images/logoOriginal.png" width={155} height={50} />
+                         </div>
+                    </Link>
                     <div className="block lg:hidden">
                          <button className={"flex items-center px-3 py-2 " + styles.hamburger} onClick={() => setCollapsed(collapsed ? false : true)}>
                               <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>

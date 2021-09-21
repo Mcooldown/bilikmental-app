@@ -5,7 +5,7 @@ import Footer from "../molecules/Footer";
 
 interface LayoutProps {
      children: ReactNode;
-     pageTitle: String;
+     pageTitle?: String;
 }
 
 const Layout = (props: LayoutProps) => {

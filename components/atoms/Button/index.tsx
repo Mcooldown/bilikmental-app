@@ -3,8 +3,8 @@ import styles from './Button.module.css';
 interface ButtonProps {
      title: String;
      type: Number;
-     onClick: VoidFunction;
-     isFull: boolean;
+     onClick?: VoidFunction;
+     isFull?: boolean;
 }
 
 const Button = (props: ButtonProps) => {

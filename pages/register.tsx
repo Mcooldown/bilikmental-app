@@ -24,7 +24,7 @@ const Register = () => {
                          <div className="pt-24 pb-48 flex justify-center">
                               <div className={styles.cardAuth + " p-10"}>
                                    <h1 className={styles.textAuth + " mb-2 text-dark-1"}>Create New Account</h1>
-                                   <p className="text-gray-1 mb-10">Already have an account? <Link href="/register"><span className="text-blue-1" style={{ cursor: "pointer" }}>Login</span></Link></p>
+                                   <p className="text-gray-1 mb-10">Already have an account? <Link href="/login"><span className="text-blue-1" style={{ cursor: "pointer" }}>Login</span></Link></p>
 
                                    <div className="grid grid-cols-2 gap-3 mb-4">
                                         <div className="col-span-1">

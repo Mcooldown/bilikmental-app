@@ -4,6 +4,7 @@
      padding: 1.75rem;
      transition: 0.2s ease all;
      cursor: pointer;
+     background: white;
 }
 
 .cardQuote:hover {
