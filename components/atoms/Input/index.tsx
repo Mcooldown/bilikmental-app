@@ -2,12 +2,13 @@ import { Fragment } from 'react';
 import styles from './Input.module.css';
 
 interface inputProps {
-     name: string,
-     id: string,
+     name?: string,
+     id?: string,
+     value?: string,
      disabled?: boolean,
      width?: number,
      label?: string,
-     type: string,
+     type?: string,
      placeholder?: string,
      isFull?: boolean,
      onChange?: VoidFunction,
@@ -15,7 +16,7 @@ interface inputProps {
 
 const Input = (props: inputProps) => {
 
-     const { name, id, disabled, width, label, type, placeholder, isFull, onChange } = props;
+     const { name, id, value, disabled, width, label, type, placeholder, isFull, onChange } = props;
 
      return (
           <Fragment>
@@ -25,7 +26,7 @@ const Input = (props: inputProps) => {
                          {label}
                     </label>
                }
-               <input disabled={disabled} style={{ width: width }} className={styles.input + (isFull ? " w-full" : "") + " py-2 px-3 focus:outline-none"} id={name} type={type} placeholder={placeholder}
+               <input value={value} disabled={disabled} style={{ width: width }} className={styles.input + (isFull ? " w-full" : "") + " py-2 px-3 focus:outline-none"} id={name} type={type} placeholder={placeholder}
                     onChange={onChange} />
           </Fragment>
      )

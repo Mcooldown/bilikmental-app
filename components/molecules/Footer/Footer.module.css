@@ -1,9 +1,5 @@
 .footerWrapper {
      background: white;
-}
-
-.titleFooter {
-     font-size: 28px;
-     font-weight: bold;
-     line-height: 2.25rem;
+     padding-top: 2.5rem;
+     padding-bottom: 2rem;
 }

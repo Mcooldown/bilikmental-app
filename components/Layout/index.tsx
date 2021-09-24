@@ -16,7 +16,8 @@ const Layout = (props: LayoutProps) => {
           <Fragment>
                <Head>
                     <title>Bilik Mental | {pageTitle}</title>
-                    <meta name="description" content="BIlik Mental" />
+                    <meta name="description" content="Web based platform for mental health consultation and meditation" />
+                    <meta name="keywords" content="Bilik Mental" />
                </Head>
                <Navbar />
                {children}

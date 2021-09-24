@@ -14,15 +14,11 @@
 }
 
 .textLanding {
-     font-size: 65px;
-     font-weight: bold;
      line-height: 1.25;
 }
 
-.titleSection {
-     font-size: 48px;
-     font-weight: bold;
-     line-height: 4rem;
+.quoteSection {
+     padding-bottom: 5rem;
 }
 
 .consultSection {
@@ -35,6 +31,7 @@
      background-size: 250px,
           200px,
           cover;
+     padding-bottom: 5rem;
 }
 
 .articleSection {
@@ -46,6 +43,8 @@
           white;
      background-position: -5% 0%, 100% 0%, center center, center center;
      background-size: 250px, 350px, cover, cover;
+     padding-top: 5rem;
+     padding-bottom: 2.5rem;
 }
 
 .meditationSection {
@@ -55,4 +54,6 @@
           cover;
      background-position: center 101%,
           center center;
+     padding-bottom: 13rem;
+     padding-top: 1.25rem;
 }

@@ -18,7 +18,7 @@ const Login = () => {
                <div className={styles.authWrapper}>
                     <div className="container mx-auto px-4 lg:px-12">
                          <Link href="/">
-                              <div className="mt-3" style={{ cursor: "pointer" }}>
+                              <div className="mt-3 cursor-pointer">
                                    <Image src="/assets/images/logoOriginal.png" width={155} height={50} />
                               </div>
                          </Link>
@@ -26,12 +26,11 @@ const Login = () => {
                               <div className="grid grid-cols-5 lg:grid-cols-11">
                                    <div className="col-span-3"></div>
                                    <div className="col-span-5">
-                                        <div className={styles.cardAuth + " p-10"}>
-                                             <h1 className={styles.textAuth + " text-dark-1"}>Login</h1>
+                                        <div className="card-shadow p-10">
+                                             <h1 className="text-size-3 font-bold text-dark-1">Login</h1>
                                              <Gap height={10} />
-                                             <p className="text-gray-1">Not have an account? <Link href="/register"><span className="text-blue-1" style={{ cursor: "pointer" }}>Create an Account</span></Link></p>
+                                             <p className="text-gray-1">Not have an account? <Link href="/register"><span className="text-blue-1 cursor-pointer">Create New Account</span></Link></p>
                                              <Gap height={40} />
-
                                              <Input type="text" label="Email" id="email" name="email" isFull />
                                              <Gap height={15} />
                                              <Input type="password" label="Password" id="password" name="password" isFull />
@@ -40,7 +39,7 @@ const Login = () => {
                                                   <small className="text-gray-1">Forgot your password?</small>
                                              </div>
                                              <Gap height={40} />
-                                             <Button type={2} title="Login" onClick={() => { }} isFull={true} />
+                                             <Button type={2} title="Login" isFull />
                                              <Gap height={15} />
                                         </div>
                                    </div>

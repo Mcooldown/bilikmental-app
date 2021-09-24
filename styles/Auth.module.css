@@ -3,7 +3,7 @@
           url('/assets/images/blueCircle.png') no-repeat,
           url('/assets/images/blueCircle.png') no-repeat;
      background-size: 300px, 100px, 350px;
-     background-position: 75% 10%, 20% 10%, 20% 90%;
+     background-position: 75% 5%, 20% 10%, 20% 90%;
 }
 
 .authRowWrapper {
