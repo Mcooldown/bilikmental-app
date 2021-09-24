@@ -28,7 +28,7 @@ const Select = (props: selectProps) => {
                }
                <select defaultValue={defaultValue} value={value} disabled={disabled} style={{ width: width }} className={styles.select + (isFull ? " w-full" : "") + " p-2 focus:outline-none"} id={name}
                     onChange={onChange}>
-                    <option value="">Choose gender...</option>
+                    <option value="">Choose...</option>
                     {
                          options.map(option => {
                               return <option value={option}>{option}</option>

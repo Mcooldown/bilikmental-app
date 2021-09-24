@@ -33,7 +33,7 @@ const Quotes = () => {
                                    <Gap width={10} />
                                    <Button type={1} title="Behaviour" />
                               </div>
-                              <Gap height={20} />
+                              <Gap height={40} />
                               <h1 className="text-size-3 font-bold">Category: All</h1>
                               <Gap height={10} />
                               <hr />

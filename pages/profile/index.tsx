@@ -14,21 +14,21 @@ const Profile = () => {
                <div className={styles.contentWrapper}>
                     <div className="container mx-auto px-4 lg:px-12">
                          <div className={styles.content}>
-                              <h1 className={styles.title}>Profile</h1>
+                              <h1 className="text-size-2 font-bold text-white">Welcome, Vincent Hadinata</h1>
                               <Gap height={20} />
-                              <div className={styles.cardContent + " flex"}>
-                                   <Button type={2} title="Profile" />
+                              <div className="card-shadow px-6 py-8 flex">
+                                   <Button type={2} title="Profile" onClick={() => router.push('/profile')} />
                                    <Gap width={10} />
-                                   <Button type={1} title="Consultation" />
+                                   <Button type={1} title="Consultation" onClick={() => router.push('/consultation')} />
                                    <Gap width={10} />
-                                   <Button type={1} title="Meditation" />
+                                   <Button type={1} title="Meditation" onClick={() => router.push('/meditation')} />
                                    <Gap width={10} />
                                    <Button type={1} title="My Quotes" />
                                    <Gap width={10} />
                                    <Button type={1} title="My Articles" />
                               </div>
-                              <Gap height={20} />
-                              <h1 className={styles.titleSub}>Profile</h1>
+                              <Gap height={40} />
+                              <h1 className="text-size-3 font-bold">Profile</h1>
                               <Gap height={10} />
                               <hr />
                               <Gap height={40} />

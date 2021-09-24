@@ -4,11 +4,11 @@ import Gap from "../../components/atoms/Gap";
 import Layout from "../../components/Layout";
 import styles from "../../styles/SubPage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faLongArrowAltLeft } from "@fortawesome/free-solid-svg-icons";
 
-const Meditation = () => {
+const NewMeditation = () => {
      return (
-          <Layout pageTitle="Meditation">
+          <Layout pageTitle="New Consultation">
                {/* HEADER */}
                <div className={styles.subHeader}>
                </div>
@@ -20,7 +20,7 @@ const Meditation = () => {
                               <div className="card-shadow px-6 py-8 flex">
                                    <Button type={1} title="Profile" onClick={() => router.push('/profile')} />
                                    <Gap width={10} />
-                                   <Button type={1} title="Consultation" onClick={() => router.push('/consultation')} />
+                                   <Button type={1} title="Consultation" onClick={() => router.push('/NewConsultation')} />
                                    <Gap width={10} />
                                    <Button type={2} title="Meditation" onClick={() => router.push('/meditation')} />
                                    <Gap width={10} />
@@ -30,11 +30,11 @@ const Meditation = () => {
                               </div>
                               <Gap height={40} />
                               <div className="flex justify-between items-center">
-                                   <h1 className="text-size-3 font-bold">Meditation</h1>
-                                   <Button type={2} onClick={() => router.push('/meditation/new')}>
-                                        <FontAwesomeIcon icon={faPlus} size="lg" className="text-white mr-3" />
-                                        <span className="text-white">New Meditation</span>
-                                   </Button>
+                                   <h1 className="text-size-3 font-bold">New Meditation</h1>
+                                   <div className="inline-flex items-center cursor-pointer" onClick={() => router.push('/meditation')}>
+                                        <FontAwesomeIcon icon={faLongArrowAltLeft} size="lg" className="text-gray-1 mr-3" />
+                                        <span className="text-gray-1">Back to Meditation</span>
+                                   </div>
                               </div>
                               <Gap height={10} />
                               <hr />
@@ -47,4 +47,4 @@ const Meditation = () => {
      )
 }
 
-export default Meditation;
+export default NewMeditation;
