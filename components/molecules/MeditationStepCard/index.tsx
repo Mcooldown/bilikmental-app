@@ -61,7 +61,7 @@ const MeditationStepCard = (props: propsObj) => {
                                              video &&
                                              <Fragment>
                                                   <Gap width={10} />
-                                                  <Button type={1} title="View Resource File" onClick={() => router.push(resourceFile)} />
+                                                  <Button type={1} title="Watch Video" onClick={() => router.push(video)} />
                                              </Fragment>
                                         }
                                    </div>
