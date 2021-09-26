@@ -5,11 +5,11 @@ import Layout from "../../components/Layout";
 import styles from "../../styles/SubPage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLongArrowAltLeft } from "@fortawesome/free-solid-svg-icons";
-import MeditationCard from "../../components/molecules/MeditationCard";
+import MeditationStepCard from "../../components/molecules/MeditationStepCard";
 
-const NewMeditation = () => {
+const MeditationDetail = () => {
      return (
-          <Layout pageTitle="New Meditation">
+          <Layout pageTitle="Meditation Detail">
                {/* HEADER */}
                <div className={styles.subHeader}>
                </div>
@@ -31,7 +31,7 @@ const NewMeditation = () => {
                               </div>
                               <Gap height={40} />
                               <div className="flex justify-between items-center">
-                                   <h1 className="text-size-3 font-bold">New Meditation</h1>
+                                   <h1 className="text-size-3 font-bold">Meditation: Love Meditation</h1>
                                    <div className="inline-flex items-center cursor-pointer" onClick={() => router.push('/meditation')}>
                                         <FontAwesomeIcon icon={faLongArrowAltLeft} size="lg" className="text-gray-1 mr-3" />
                                         <span className="text-gray-1">Back to Meditation</span>
@@ -40,9 +40,11 @@ const NewMeditation = () => {
                               <Gap height={10} />
                               <hr />
                               <Gap height={40} />
-                              <MeditationCard id="1" name="Love Meditation" description="meditasi untuk orang yang ingin dicintai" videoProvided time={100} onClick={() => router.push('/meditation')} />
-                              <Gap height={30} />
-                              <MeditationCard id="2" name="Mindfulness Meditation" description="meditasi untuk orang yang banyak pikiran" time={50} onClick={() => router.push('/meditation')} />
+                              <MeditationStepCard step={1} status={1} name="Introduction" />
+                              <Gap height={20} />
+                              <MeditationStepCard step={2} status={2} name="Create Good Environment" video={"111"} resourceFile={"sads"} />
+                              <Gap height={20} />
+                              <MeditationStepCard step={3} status={3} name="Start Your Meditation" />
                               <Gap height={150} />
                          </div>
                     </div>
@@ -52,4 +54,4 @@ const NewMeditation = () => {
      )
 }
 
-export default NewMeditation;
+export default MeditationDetail;

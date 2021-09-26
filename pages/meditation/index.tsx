@@ -5,6 +5,7 @@ import Layout from "../../components/Layout";
 import styles from "../../styles/SubPage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import UserMeditationCard from "../../components/molecules/UserMeditationCard";
 
 const Meditation = () => {
      return (
@@ -38,6 +39,17 @@ const Meditation = () => {
                               </div>
                               <Gap height={10} />
                               <hr />
+                              <Gap height={40} />
+                              <div className="grid grid-cols-1 lg:grid-cols-3 gap-7 items-start">
+                                   <div className="col-span-1">
+                                        <UserMeditationCard id="1" title="Love Meditation" progress={50}
+                                             onClick={() => router.push('/meditation')} />
+                                   </div>
+                                   <div className="col-span-1">
+                                        <UserMeditationCard id="1" title="Mindfulness Meditation" progress={10}
+                                             onClick={() => router.push('/meditation')} />
+                                   </div>
+                              </div>
                               <Gap height={150} />
                          </div>
                     </div>

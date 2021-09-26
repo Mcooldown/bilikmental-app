@@ -41,7 +41,7 @@
                rgb(91, 166, 255),
                rgb(39, 138, 255)),
           white;
-     background-position: -5% 0%, 100% 0%, center center, center center;
+     background-position: -5% 10%, 100% 10%, center center, center top;
      background-size: 250px, 350px, cover, cover;
      padding-top: 5rem;
      padding-bottom: 2.5rem;
