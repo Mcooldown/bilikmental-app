@@ -8,18 +8,19 @@ interface ButtonProps {
      isFull?: boolean;
      isLoading?: boolean;
      children?: ReactNode;
+     disabled?: boolean;
 }
 
 const Button = (props: ButtonProps) => {
 
-     const { title, type, onClick, isFull, isLoading, children } = props;
+     const { title, type, onClick, isFull, isLoading, children, disabled } = props;
 
      const style =
           type === 1 ? styles.type1 :
                type === 2 ? styles.type2 : '';
 
      return (
-          <button className={style + " " + styles.default + (isFull ? " w-full" : "")} onClick={onClick}>{children ? children : isLoading ? 'Please wait...' : title}</button>
+          <button className={style + " disabled:opacity-50 " + styles.default + (isFull ? " w-full" : "")} onClick={onClick} disabled={disabled}>{children ? children : isLoading ? 'Please wait...' : title}</button>
      )
 }
 

@@ -1,4 +1,11 @@
 .select {
      border-radius: 5px;
+}
+
+.selectError {
+     border: 1px solid red !important;
+}
+
+.selectDefault {
      border: 1px solid #B9B9B9 !important;
 }

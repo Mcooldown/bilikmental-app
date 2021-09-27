@@ -1,4 +1,11 @@
 .input {
      border-radius: 5px;
+}
+
+.inputError {
+     border: 1px solid red !important;
+}
+
+.inputDefault {
      border: 1px solid #B9B9B9 !important;
 }

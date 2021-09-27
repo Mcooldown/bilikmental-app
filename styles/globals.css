@@ -23,8 +23,20 @@ a {
   background-color: #278AFF;
 }
 
+.bg-gray-1 {
+  background-color: #848484;
+}
+
+.bg-gray-2 {
+  background-color: #C4C4C4;
+}
+
 .text-gray-1 {
   color: #848484;
+}
+
+.text-gray-2 {
+  color: #C4C4C4;
 }
 
 .text-dark-1 {

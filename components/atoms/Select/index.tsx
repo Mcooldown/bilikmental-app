@@ -9,24 +9,27 @@ interface selectProps {
      width?: number,
      label?: string,
      isFull?: boolean,
-     onChange?: VoidFunction,
+     onChange?: (e?: any) => void,
      options: Array<string>,
      defaultValue: string,
+     required?: boolean,
+     errorMessage?: string,
 }
 
 const Select = (props: selectProps) => {
 
-     const { name, id, value, options, disabled, width, label, isFull, defaultValue, onChange } = props;
+     const { name, id, value, options, disabled, width, label, isFull, defaultValue,
+          onChange, required, errorMessage } = props;
 
      return (
           <Fragment>
                {
                     label &&
                     <label className="block text-gray-1 mb-1" htmlFor={id}>
-                         {label}
+                         {label} {required && <span className="text-red-500">*</span>}
                     </label>
                }
-               <select defaultValue={defaultValue} value={value} disabled={disabled} style={{ width: width }} className={styles.select + (isFull ? " w-full" : "") + " p-2 focus:outline-none"} id={name}
+               <select defaultValue={defaultValue} value={value} disabled={disabled} style={{ width: width }} className={styles.select + " " + (errorMessage ? styles.selectError : styles.selectDefault) + (isFull ? " w-full" : "") + " p-2 focus:outline-none"} id={name}
                     onChange={onChange}>
                     <option value="">Choose...</option>
                     {
@@ -35,6 +38,9 @@ const Select = (props: selectProps) => {
                          })
                     }
                </select>
+               {
+                    errorMessage && <small className="text-red-400">{errorMessage}</small>
+               }
           </Fragment>
      )
 }
