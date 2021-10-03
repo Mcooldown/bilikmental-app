@@ -10,9 +10,9 @@ const SubPageCard = (props) => {
                {
                     options && options.map((option, index) => {
                          return (
-                              <Fragment>
+                              <Fragment key={option}>
                                    {index > 0 && <Gap width={10} />}
-                                   <Button key={option} type={option === selectedOption ? 2 : 1} title={option} onClick={() => handleSetCategory(option)} />
+                                   <Button type={option === selectedOption ? 2 : 1} title={option} onClick={() => handleSetCategory(option)} />
                               </Fragment>
                          )
                     })
