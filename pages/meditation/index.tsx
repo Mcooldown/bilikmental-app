@@ -41,12 +41,12 @@ const Meditation = () => {
                               <hr />
                               <Gap height={40} />
                               <div className="grid grid-cols-1 lg:grid-cols-3 gap-7 items-start">
-                                   <div className="col-span-1">
+                                   <div className="col-span-1" key="1">
                                         <UserMeditationCard id="1" title="Love Meditation" progress={50}
                                              onClick={() => router.push('/meditation')} />
                                    </div>
-                                   <div className="col-span-1">
-                                        <UserMeditationCard id="1" title="Mindfulness Meditation" progress={10}
+                                   <div className="col-span-1" key="2">
+                                        <UserMeditationCard id="2" title="Mindfulness Meditation" progress={10}
                                              onClick={() => router.push('/meditation')} />
                                    </div>
                               </div>
