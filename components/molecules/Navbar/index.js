@@ -55,18 +55,16 @@ const Navbar = () => {
                          (!isMobile || !collapsed) &&
                          <div className="w-full block lg:flex lg:items-center lg:w-auto">
                               <div className="text-white lg:flex-grow lg:mr-5">
+                                   <Link href="/quotes"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:mr-4">Quotes</a></Link>
+                                   <Link href="/consultation"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:mr-4">Consultation</a></Link>
+                                   <Link href="/articles"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:mr-4">Articles</a></Link>
+                                   <Link href="/meditation"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0">Meditation</a></Link>
                                    {
                                         localStorage.getItem('userId') ?
                                              <Fragment>
-                                                  <a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:mr-4" onClick={handleLogout}>Logout</a>
+                                                  <a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:ml-4" onClick={handleLogout}>Logout</a>
                                              </Fragment>
-                                             :
-                                             <Fragment>
-                                                  <Link href="/quotes"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:mr-4">Quotes</a></Link>
-                                                  <Link href="/consultation"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:mr-4">Consultation</a></Link>
-                                                  <Link href="/articles"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:mr-4">Articles</a></Link>
-                                                  <Link href="/meditation"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0">Meditation</a></Link>
-                                             </Fragment>
+                                             : null
                                    }
                               </div>
                               {

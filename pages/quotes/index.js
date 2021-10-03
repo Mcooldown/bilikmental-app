@@ -21,10 +21,10 @@ const Quotes = () => {
      ];
 
      const [quotes, setQuotes] = useState(null);
-     const perPageOptions = [2,4,8,12,16];
+     const perPageOptions = [10,20,40];
      
      const [category, setCategory] = useState("All");
-     const [perPage, setPerPage] = useState(2);
+     const [perPage, setPerPage] = useState(10);
      const [currentPage, setCurrentPage] = useState(1);
 
      const [params, setParams] = useState({
@@ -42,6 +42,7 @@ const Quotes = () => {
      const handleSetCurrentPage = (value) => {
           setCurrentPage(value);
           handleSetParams("currentPage", value);
+          window.scrollTo(0,0);
      }
 
      const handleSetCategory = (value) => {
