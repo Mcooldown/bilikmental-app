@@ -1,9 +1,10 @@
 import styles from './Navbar.module.css';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Button from '../../atoms/Button';
 import { useRouter } from 'next/router';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
 
@@ -31,6 +32,12 @@ const Navbar = () => {
 
      }, [isMobile]);
 
+     const handleLogout = () => {
+          localStorage.clear();
+          Swal.fire({ icon: 'success', title: 'Success', text: 'Logout Success', confirmButtonColor: '#278AFF', confirmButtonText: 'OK', timer: 5000, });
+          router.push('/login')
+     }
+
      return (
           <nav className={styles.navbar + " " + (navbarClassName === 'navbar-white' ? styles.navbarWhite : styles.navbarTransparent) + " fixed w-full"}>
                <div className="container mx-auto flex items-center justify-between flex-wrap p-3 lg:px-12">
@@ -48,17 +55,31 @@ const Navbar = () => {
                          (!isMobile || !collapsed) &&
                          <div className="w-full block lg:flex lg:items-center lg:w-auto">
                               <div className="text-white lg:flex-grow lg:mr-5">
-                                   <Link href="/quotes"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:mr-4">Quotes</a></Link>
-                                   <Link href="/consultation"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:mr-4">Consultation</a></Link>
-                                   <Link href="/articles"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:mr-4">Articles</a></Link>
-                                   <Link href="/meditation"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0">Meditation</a></Link>
+                                   {
+                                        localStorage.getItem('userId') ?
+                                             <Fragment>
+                                                  <a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:mr-4" onClick={handleLogout}>Logout</a>
+                                             </Fragment>
+                                             :
+                                             <Fragment>
+                                                  <Link href="/quotes"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:mr-4">Quotes</a></Link>
+                                                  <Link href="/consultation"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:mr-4">Consultation</a></Link>
+                                                  <Link href="/articles"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:mr-4">Articles</a></Link>
+                                                  <Link href="/meditation"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0">Meditation</a></Link>
+                                             </Fragment>
+                                   }
                               </div>
-                              <div className="block text-center mt-4 lg:inline-block lg:mr-4 lg:mt-0">
-                                   <Button title="Login" type={1} onClick={() => router.push('/login')} isFull={false} />
-                              </div>
-                              <div className="block text-center mt-4 lg:inline-block lg:mt-0">
-                                   <Button title="Register" type={2} onClick={() => router.push('/register')} isFull={false} />
-                              </div>
+                              {
+                                   !localStorage.getItem('userId') &&
+                                   <Fragment>
+                                        <div className="block text-center mt-4 lg:inline-block lg:mr-4 lg:mt-0">
+                                             <Button title="Login" type={1} onClick={() => router.push('/login')} isFull={false} />
+                                        </div>
+                                        <div className="block text-center mt-4 lg:inline-block lg:mt-0">
+                                             <Button title="Register" type={2} onClick={() => router.push('/register')} isFull={false} />
+                                        </div>
+                                   </Fragment>
+                              }
                          </div>
                     }
                </div>

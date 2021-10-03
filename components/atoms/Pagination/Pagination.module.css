@@ -1,0 +1,23 @@
+.paginationBox {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border: 1px solid #C4C4C4;
+     padding: 0.5rem 1rem;
+     cursor: pointer;
+     border-radius: 5px;
+     margin: 0 5px;
+     transition: 0.2s ease all;
+}
+
+.paginationBox:hover {
+     background-color: #278AFF;
+     color: white;
+     border: 1px solid white;
+}
+
+.selected {
+     color: white;
+     background-color: #278AFF;
+     border: 1px solid white;
+}

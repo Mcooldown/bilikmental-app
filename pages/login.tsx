@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react"
+import { Fragment, useEffect, useState } from "react"
 import Footer from "../components/molecules/Footer";
 import Image from 'next/image';
 import styles from '../styles/Auth.module.css';
@@ -22,6 +22,15 @@ const Login = () => {
      const [password, setPassword] = useState('');
      const [errPassword, setErrPassword] = useState('');
 
+     useEffect(() => {
+
+          const userId = localStorage.getItem('userId');
+          if (userId) {
+               Swal.fire({ icon: 'error', title: 'Unauthorized', text: 'Already logged in', confirmButtonColor: '#278AFF', confirmButtonText: 'OK', timer: 5000, });
+               router.push('/profile');
+          }
+     }, []);
+
      const login = async () => {
           const options = {
                method: "POST",
@@ -43,7 +52,7 @@ const Login = () => {
                pass = false;
           }
           if (password === '') {
-               setPassword("Password must be filled");
+               setErrPassword("Password must be filled");
                pass = false;
           }
 
@@ -51,8 +60,9 @@ const Login = () => {
                setButtonLoading(true);
                login().then(res => {
                     if (res.data) {
-                         localStorage.setItem('userId', res.data.id);
+                         localStorage.setItem('userId', res.data._id);
                          localStorage.setItem('userName', res.data.name.first);
+                         localStorage.setItem('role', res.role);
                          Swal.fire({ icon: 'success', title: 'Success', text: 'Login success', confirmButtonColor: '#278AFF', confirmButtonText: 'OK', timer: 5000, });
                          router.push('/profile');
                     } else {

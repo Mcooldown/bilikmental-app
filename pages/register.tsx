@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react"
+import { Fragment, useEffect, useState } from "react"
 import Footer from "../components/molecules/Footer";
 import Image from 'next/image';
 import styles from '../styles/Auth.module.css';
@@ -48,6 +48,15 @@ const Register = () => {
 
      const [confirmPassword, setConfirmPassword] = useState('');
      const [errConfirmPassword, setErrConfirmPassword] = useState('');
+
+     useEffect(() => {
+
+          const userId = localStorage.getItem('userId');
+          if (userId) {
+               Swal.fire({ icon: 'error', title: 'Unauthorized', text: 'Already logged in', confirmButtonColor: '#278AFF', confirmButtonText: 'OK', timer: 5000, });
+               router.push('/profile');
+          }
+     }, []);
 
      const handleToSectionTwo = () => {
 
