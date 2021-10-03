@@ -318,7 +318,7 @@ const QuoteDetail = () => {
                                                             return (
                                                                  <div key={quote._id} onClick={() => handleClickMoreQuote(quote._id)} className="cursor-pointer">
                                                                       <Gap height={15} />
-                                                                      <h1 className={"text-size-5 font-bold text-blue-1 " + stylesDetail.moreHeight}>"{quote.text}"</h1>
+                                                                      <h1 className={"text-size-5 font-bold text-blue-1 " + stylesDetail.moreHeight}>&quot;{quote.text}&quot;</h1>
                                                                       <Gap height={8} />
                                                                       <p className="text-gray-1">Posted by {quote.user.name.first}</p>
                                                                       <Gap height={15} />
