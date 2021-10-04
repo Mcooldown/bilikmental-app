@@ -35,16 +35,16 @@ const Home: NextPage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mt-12">
             <div className="col-span-1">
-              <QuoteCard id="1" quote="Don’t stop when you’re tired. Stop when you’re done." author="Wesley Snipes" />
+              <QuoteCard category="Achievement" id="1" quote="Don’t stop when you’re tired. Stop when you’re done." author="Wesley Snipes" />
             </div>
             <div className="col-span-1">
-              <QuoteCard id="2" quote="Your time is limited, so don’t waste it living someone els..." author="Steve Jobs" />
+              <QuoteCard category="Achievement" id="2" quote="Your time is limited, so don’t waste it living someone els..." author="Steve Jobs" />
             </div>
             <div className="col-span-1">
-              <QuoteCard id="3" quote="People begin to become successful the minute they are bla bla bla bla" author="Harvey Mackay" />
+              <QuoteCard category="Achievement" id="3" quote="People begin to become successful the minute they are bla bla bla bla" author="Harvey Mackay" />
             </div>
             <div className="col-span-1">
-              <QuoteCard id="4" quote="Don’t count the days, make the days count." author="Muhammad Ali" />
+              <QuoteCard category="Achievement" id="4" quote="Don’t count the days, make the days count." author="Muhammad Ali" />
             </div>
           </div>
 
