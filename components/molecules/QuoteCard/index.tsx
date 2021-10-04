@@ -5,16 +5,25 @@ interface propsObj {
      id: string;
      quote: String;
      author: String;
+     isConfirmed?: boolean;
      onClick?: VoidFunction;
+     category: String;
 }
 
 const QuoteCard = (props: propsObj) => {
 
-     const { id, quote, author, onClick } = props;
+     const { id, quote, author, onClick, isConfirmed, category } = props;
 
      return (
-          <div key={id} className="card-shadow cursor-pointer scale-hover p-7" onClick={onClick}>
-               <h1 className={styles.textQuote + " text-size-4 font-bold text-blue-1"}>{quote}</h1>
+          <div key={id} className="card-shadow cursor-pointer scale-hover p-7" onClick={isConfirmed ? onClick : () => { }}>
+               <p className="text-gray-1">{category}
+                    {
+                         !isConfirmed &&
+                         <span className="text-red-600">&nbsp;(Not published)</span>
+                    }
+               </p>
+               <p></p>
+               <h1 className={styles.textQuote + " text-size-4 font-bold text-blue-1"}>&quot;{quote}&quot;</h1>
                <Gap height={9} />
                <p className="text-size-6 text-gray-1">- {author}</p>
                <Gap height={6} />

@@ -1,10 +1,11 @@
 import Button from "../../components/atoms/Button";
 import Gap from "../../components/atoms/Gap";
+import Comment from "../../components/molecules/Comment";
 import Layout from "../../components/Layout";
 import styles from "../../styles/SubPage.module.css";
 import stylesDetail from "../../styles/Detail.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusCircle, faShareAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPlusCircle, faShareAlt} from "@fortawesome/free-solid-svg-icons";
 import { Fragment, useEffect, useState } from "react";
 import Input from "../../components/atoms/Input";
 import { useRouter } from "next/router";
@@ -25,6 +26,8 @@ const QuoteDetail = () => {
      const [commentText, setCommentText] = useState('');
      const [buttonLoading, setButtonLoading] = useState(false);
      const [showAdd, setShowAdd] = useState(false);
+     const [userId, setUserId] = useState(null);
+     const [editId, setEditId] = useState(0);
 
      const fetchQuote = async (signal) => {
           try {
@@ -107,6 +110,7 @@ const QuoteDetail = () => {
           const abortCont = new AbortController();
           
           if(router.query.id){
+               setUserId(localStorage.getItem('userId'));
                setQuoteId(router.query.id);
                fetchQuote(abortCont.signal);
                fetchMoreQuotes(abortCont.signal);
@@ -164,6 +168,43 @@ const QuoteDetail = () => {
           return () => abortCont.abort();
      }
 
+     const handleUpdateComment = (id) => {
+          const abortCont = new AbortController();
+          
+          const updateComment = async() => {
+               try {
+                    const url = urlAPI + '/v1/comments/update';
+                    const options = {
+                         signal: abortCont.signal,
+                         method: "POST",
+                         headers: { 'Content-Type': 'application/json' },
+                         body: JSON.stringify({
+                              commentId: editId,
+                              text: commentText,
+                         })
+                    };
+                    const res = await fetch(url, options);
+
+                    if(!res.ok){
+                         throw Error("Error submit comment");
+                    }
+               } catch (error) {
+                    console.log(error);
+               }
+          }
+
+          setButtonLoading(true);
+          updateComment().then(() => {
+               Swal.fire({ icon: 'success', title: 'Success', text: 'Comment updated', confirmButtonColor: '#278AFF', confirmButtonText: 'OK', timer: 5000, });
+               setButtonLoading(false);
+               setCommentText('');
+               setEditId(0);
+               fetchComments();
+          } );
+
+          return () => abortCont.abort();
+     }
+
      const handleDeleteComment = (id) => {
           const abortCont = new AbortController();
           
@@ -198,12 +239,31 @@ const QuoteDetail = () => {
           }).then((result) => {
                if (result.isConfirmed) {
                     deleteComment().then(() => {
+                         Swal.fire({ icon: 'success', title: 'Success', text: 'Comment successfully deleted', confirmButtonColor: '#278AFF', confirmButtonText: 'OK', timer: 5000, });
                          fetchComments();
                     })
                }
           })
 
           return () => abortCont.abort();
+     }
+
+     const handleAddComment = () => {
+          setEditId(0);
+          setShowAdd(true);
+          setCommentText('');
+     }
+
+     const handleEditComment = (id, text) => {
+          setEditId(id);
+          setShowAdd(false);
+          setCommentText(text);
+     }
+
+     const handleCancelComment = () => {
+          setShowAdd(false);
+          setCommentText('');
+          setEditId(0);
      }
 
      return (
@@ -236,14 +296,15 @@ const QuoteDetail = () => {
                                              <div className="flex justify-between items-center">
                                                   <h1 className="text-size-5 font-bold">Comments</h1>
                                                   {
-                                                       !showAdd ?
-                                                       <div className="inline-flex items-center cursor-pointer" onClick={() => setShowAdd(true)}>
+                                                       !userId ? <p className="text-gray-1 cursor-pointer" 
+                                                       onClick={() => router.push('/login')}>Login to write new comment</p>
+                                                       : !showAdd ?
+                                                       <div className="inline-flex items-center cursor-pointer" onClick={handleAddComment}>
                                                             <FontAwesomeIcon icon={faPlusCircle} size="lg" className="text-gray-1" />
                                                             <Gap width={10} />
                                                             <small className="text-gray-1">Add New Comment</small>
                                                        </div>
-                                                       : !localStorage.getItem('userId') ? <p className="text-gray-1 cursor-pointer" 
-                                                       onClick={() => router.push('/login')}>Login to write new comment</p> : null
+                                                       : null
                                                   }
                                              </div>
                                              <Gap height={10} />
@@ -256,7 +317,7 @@ const QuoteDetail = () => {
                                                        name="commentText" placeholder="Write your comment here" isFull />
                                                        <Gap height={15} />
                                                        <div className="flex justify-end">
-                                                            <Button type={1} title="Cancel" onClick={() => {setShowAdd(false); setCommentText('')}} />
+                                                            <Button type={1} title="Cancel" onClick={handleCancelComment} />
                                                             <Gap width={10} />
                                                             <Button type={2} title="Submit" isLoading={buttonLoading ? true : false} onClick={handleSubmitComment} />
                                                        </div>
@@ -268,28 +329,10 @@ const QuoteDetail = () => {
                                                   comments && comments.length > 0 ? comments.map((comment, index) => {
                                                        return (
                                                             <Fragment key={comment._id}>
-                                                                 <Gap height={20} />
-                                                                 <div className="flex justify-between">
-                                                                      <div className="flex items-start">
-                                                                           <img src={comment.user.photo} className="rounded-full w-12 h-12" alt={comment._id} />
-                                                                           <Gap width={20} />
-                                                                           <div>
-                                                                                <h1 className="text-size-6 font-bold text-blue-1">{comment.user.name.first + " " + comment.user.name.last}</h1>
-                                                                                <p className="text-dark-1">{comment.text}</p>
-                                                                           </div>
-                                                                      </div>
-                                                                      <div className="flex">
-                                                                           <p className="text-gray-1">{new Date(comment.createdAt).toLocaleString('en-US',{day: "numeric", month: "long", year: "numeric"})}</p>
-                                                                           {
-                                                                                comment.user._id === localStorage.getItem('userId') &&
-                                                                                <Fragment>
-                                                                                     <Gap width={15} />
-                                                                                     <FontAwesomeIcon icon={faTrash} size="lg" className="text-red-500 cursor-pointer" onClick={() => handleDeleteComment(comment._id)} />
-                                                                                </Fragment>
-                                                                           }
-                                                                      </div>
-                                                                 </div>
-                                                                 <Gap height={20} />
+                                                                 <Comment comment={comment} commentText={commentText} editId={editId} userId={userId}
+                                                                 buttonLoading={buttonLoading} handleUpdateComment={handleUpdateComment} handleCancelComment={handleCancelComment}
+                                                                 handleEditComment={handleEditComment} handleDeleteComment={handleDeleteComment}
+                                                                 handleSetCommentText={(text) => setCommentText(text)}  />
                                                                  {index !== comments.length-1 ? <hr /> : ''}
                                                             </Fragment>
                                                             )    
@@ -320,7 +363,7 @@ const QuoteDetail = () => {
                                                                       <Gap height={15} />
                                                                       <h1 className={"text-size-5 font-bold text-blue-1 " + stylesDetail.moreHeight}>&quot;{quote.text}&quot;</h1>
                                                                       <Gap height={8} />
-                                                                      <p className="text-gray-1">Posted by {quote.user.name.first}</p>
+                                                                      <p className="text-gray-1">- {quote.user.name.first + " " + quote.user.name.last}</p>
                                                                       <Gap height={15} />
                                                                       {index !== moreQuotes.length-1 && <hr />}
                                                                  </div>

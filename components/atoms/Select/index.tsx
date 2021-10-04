@@ -14,12 +14,13 @@ interface selectProps {
      defaultValue: string,
      required?: boolean,
      errorMessage?: string,
+     withoutChoose?: boolean
 }
 
 const Select = (props: selectProps) => {
 
      const { name, id, value, options, disabled, width, label, isFull, defaultValue,
-          onChange, required, errorMessage } = props;
+          onChange, required, errorMessage, withoutChoose } = props;
 
      return (
           <Fragment>
@@ -31,7 +32,10 @@ const Select = (props: selectProps) => {
                }
                <select defaultValue={defaultValue} value={value} disabled={disabled} style={{ width: width }} className={styles.select + " " + (errorMessage ? styles.selectError : styles.selectDefault) + (isFull ? " w-full" : "") + " p-2 focus:outline-none"} id={name}
                     onChange={onChange}>
-                    <option value="">Choose...</option>
+                    {
+                         !withoutChoose &&
+                         <option value="">Choose...</option>
+                    }
                     {
                          options.map(option => {
                               return <option key={option} value={option}>{option}</option>

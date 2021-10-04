@@ -61,7 +61,7 @@ const Login = () => {
                login().then(res => {
                     if (res.data) {
                          localStorage.setItem('userId', res.data._id);
-                         localStorage.setItem('userName', res.data.name.first);
+                         localStorage.setItem('userName', res.data.name.first + " " + res.data.name.last);
                          localStorage.setItem('role', res.role);
                          Swal.fire({ icon: 'success', title: 'Success', text: 'Login success', confirmButtonColor: '#278AFF', confirmButtonText: 'OK', timer: 5000, });
                          router.push('/profile');

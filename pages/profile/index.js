@@ -5,7 +5,9 @@ import Layout from "../../components/Layout";
 import styles from "../../styles/SubPage.module.css";
 import Image from "next/image";
 import Swal from "sweetalert2";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
+import Loader from "../../components/atoms/Loader";
+import SubPageCard from "../../components/molecules/SubPageCard";
 
 const Profile = () => {
 
@@ -13,6 +15,10 @@ const Profile = () => {
      const urlAPI = "https://bilikmental-api.vercel.app";
      const [userData, setUserData] = useState(null);
      const [userName, setUserName] = useState('');
+
+     const dashboardOptions = [
+          "Profile","Consultation","Meditation","My Quotes", "My Articles"
+     ];
 
      useEffect(() => {
           
@@ -54,6 +60,14 @@ const Profile = () => {
           return () => abortCont.abort();
      }, []);
 
+     const handleSetOption = (value) => {
+          if(value === "Profile") router.push('/profile');
+          else if(value === "Consultation") router.push('/consultation');
+          else if(value === "Meditation") router.push('/meditation');
+          else if(value === "My Quotes") router.push('/quotes/my');
+          else if(value === "My Articles") router.push('/articles/my');
+     }
+
      return (
           <Layout pageTitle="Profile">
                {/* HEADER */}
@@ -64,24 +78,14 @@ const Profile = () => {
                          <div className={styles.content}>
                               <h1 className="text-size-2 font-bold text-white">Welcome, {userName ? userName : ''}</h1>
                               <Gap height={20} />
-                              <div className="card-shadow px-6 py-8 flex">
-                                   <Button type={2} title="Profile" onClick={() => router.push('/profile')} />
-                                   <Gap width={10} />
-                                   <Button type={1} title="Consultation" onClick={() => router.push('/consultation')} />
-                                   <Gap width={10} />
-                                   <Button type={1} title="Meditation" onClick={() => router.push('/meditation')} />
-                                   <Gap width={10} />
-                                   <Button type={1} title="My Quotes" />
-                                   <Gap width={10} />
-                                   <Button type={1} title="My Articles" />
-                              </div>
+                              <SubPageCard options={dashboardOptions} selectedOption={"Profile"} handleSetOption={(option) => handleSetOption(option)} />
                               <Gap height={40} />
                               <h1 className="text-size-3 font-bold">Profile</h1>
                               <Gap height={10} />
                               <hr />
                               <Gap height={40} />
                               {
-                                   userData &&
+                                   userData ?
                                    <div className="grid grid-cols-12 gap-7 items-start">
                                         <div className="col-span-12 lg:col-span-3">
                                              <img src="/assets/images/commentSample.jpg" className="rounded-full w-60 h-60" alt="imageComment" />
@@ -100,6 +104,11 @@ const Profile = () => {
                                              </div>
                                         </div>
                                    </div>
+                                   :
+                                   <Fragment>
+                                        <Gap height={20} />
+                                        <Loader />
+                                   </Fragment>
                               }
                               <Gap height={40} />
                               <hr />

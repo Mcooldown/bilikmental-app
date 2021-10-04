@@ -4,7 +4,7 @@ import Gap from "../../atoms/Gap"
 
 const SubPageCard = (props) => {
 
-     const {options, selectedOption, handleSetCategory} = props;
+     const {options, selectedOption, handleSetOption} = props;
      return (
           <div className="card-shadow px-6 py-8 flex">
                {
@@ -12,7 +12,7 @@ const SubPageCard = (props) => {
                          return (
                               <Fragment key={option}>
                                    {index > 0 && <Gap width={10} />}
-                                   <Button type={option === selectedOption ? 2 : 1} title={option} onClick={() => handleSetCategory(option)} />
+                                   <Button type={option === selectedOption ? 2 : 1} title={option} onClick={() => handleSetOption(option)} />
                               </Fragment>
                          )
                     })

@@ -61,7 +61,8 @@ const Navbar = () => {
                                    <Link href="/meditation"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0">Meditation</a></Link>
                                    {
                                         localStorage.getItem('userId') ?
-                                             <Fragment>
+                                        <Fragment>
+                                                  <Link href="/profile"><a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:ml-4">Your Dashboard</a></Link>
                                                   <a href="#" className="block text-center text-gray-1 mt-4 lg:inline-block lg:mt-0 lg:ml-4" onClick={handleLogout}>Logout</a>
                                              </Fragment>
                                              : null
