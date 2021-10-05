@@ -42,7 +42,10 @@ const Quotes = () => {
      const handleSetCurrentPage = (value) => {
           setCurrentPage(value);
           handleSetParams("currentPage", value);
-          window.scrollTo(0,0);
+          if (window !== undefined) {
+               // browser code
+               window.scrollTo(0,0);
+          }
      }
 
      const handleSetCategory = (value) => {
