@@ -1,5 +1,5 @@
 import router from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Select from "../../components/atoms/Select";
 import Gap from "../../components/atoms/Gap";
 import Layout from "../../components/Layout";
@@ -10,14 +10,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "../../components/atoms/Button";
 import Input from "../../components/atoms/Input";
 import Swal from "sweetalert2";
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const NewArticle = () => {
 
      // const urlAPI = "http://localhost:4000";
      const urlAPI = "https://bilikmental-api.vercel.app";
 
+     const editorRef = useRef();
      const [buttonLoading, setButtonLoading] = useState(false);
      const [userName, setUserName] = useState('');
      const [userId, setUserId] = useState('');
@@ -49,7 +48,7 @@ const NewArticle = () => {
 
      useEffect(() => {
           const userId = localStorage.getItem('userId');
-     
+          
           if (!userId) {
                Swal.fire({ icon: 'error', title: 'Unauthorized', text: 'Please login first', confirmButtonColor: '#278AFF', confirmButtonText: 'OK', timer: 5000, });
                router.push('/login');
@@ -170,17 +169,7 @@ const NewArticle = () => {
                               <Gap height={20} />
                               <Input required label="Title" value={title} name="title" id="title" isFull onChange={(e) => {setTitle(e.target.value);setErrTitle('')}} errorMessage={errTitle} />
                               <Gap height={20} />
-                              <label className="block text-gray-1" htmlFor="content">
-                                   Content <span className="text-red-500">*</span>
-                              </label>
-                              <Gap height={4} />
-                              <CKEditor
-                                   editor={ ClassicEditor }
-                                   data=""
-                                   onChange={ ( event, editor ) => 
-                                   {setContent(editor.getData());setErrContent('')}}
-                              />
-                              {errContent && <small className="text-red-400">{errContent}</small>}
+                              <Input required label="Content" value={content} name="content" id="content" isFull onChange={(e) => {setContent(e.target.value);setErrContent('')}} errorMessage={errContent} />
                               <Gap height={40} />
                               <div className="grid grid-cols-3 gap-5 items-center">
                                    <div className="col-span-3 lg:col-span-1">

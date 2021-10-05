@@ -294,7 +294,7 @@ const ArticleDetail = () => {
                                                             <Image className="rounded" src={article.image} layout="responsive" width={4} height={2} objectFit="cover" />
                                                        }
                                                        <Gap height={20} />
-                                                       <div dangerouslySetInnerHTML={{__html:article.content}}></div>
+                                                       {article.content}
                                                        <Gap height={15} />
                                                   </Fragment>
                                                   : <Loader />
