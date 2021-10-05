@@ -88,7 +88,7 @@ const Profile = () => {
                                    userData ?
                                    <div className="grid grid-cols-12 gap-7 items-start">
                                         <div className="col-span-12 lg:col-span-3">
-                                             <img src="/assets/images/commentSample.jpg" className="rounded-full w-60 h-60" alt="imageComment" />
+                                             <img src={userData.photo ? userData.photo : "/assets/images/defaultProfilePhoto.jpg"} className="rounded-full w-60 h-60" alt="imageComment" />
                                         </div>
                                         <div className="col-span-12 lg:col-span-9">
                                              <h1 className="text-size-4 font-bold text-blue-1">

@@ -19,7 +19,7 @@ const QuoteCard = (props: propsObj) => {
                <p className="text-gray-1">{category}
                     {
                          !isConfirmed &&
-                         <span className="text-red-600">&nbsp;(Not published)</span>
+                         <span className="text-yellow-500">&nbsp;(Waiting for confirmation)</span>
                     }
                </p>
                <p></p>

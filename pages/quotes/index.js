@@ -129,11 +129,11 @@ const Quotes = () => {
                               </div>
                               <Gap height={40} />
                               {
-                                   quotes && !isLoading ?
+                                   !isLoading ?
                                    <Fragment>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
                                              {
-                                                  quotes.data.length > 0 ?
+                                                  quotes && quotes.data.length > 0 ?
                                                   quotes.data.map(quote => {
                                                        return (
                                                             <div className="col-span-1" key={quote._id}>

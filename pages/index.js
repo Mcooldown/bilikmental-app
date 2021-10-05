@@ -1,4 +1,3 @@
-import type { NextPage } from 'next';
 import Button from '../components/atoms/Button';
 import Layout from '../components/Layout';
 import styles from '../styles/Home.module.css';
@@ -7,8 +6,54 @@ import QuoteCard from '../components/molecules/QuoteCard';
 import ArticleCard from '../components/molecules/ArticleCard';
 import router from 'next/router';
 import Link from 'next/link';
+import { Fragment, useEffect, useState } from 'react';
+import Loader from '../components/atoms/Loader';
+import Gap from '../components/atoms/Gap';
 
-const Home: NextPage = () => {
+const Home = () => {
+
+  // const urlAPI = "http://localhost:4000";
+  const urlAPI = "https://bilikmental-api.vercel.app";
+    const [quotes, setQuotes] = useState(null);
+
+    const fetchQuotes = async (signal) => {
+          try {
+               const url = urlAPI + '/v1/quotes';
+               const options = {
+                    signal: signal,
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                         params: {
+                              category: "All",
+                              currentPage: 1,
+                              perPage: 4,
+                         }
+                    })
+               };
+               const res = await fetch(url, options);
+
+               if(!res.ok){
+                    throw Error("Data not fetched");
+               }else{
+                    const json = await res.json();
+                    setQuotes(json.data);
+               }
+          } catch (error) {
+               console.log(error);
+          }
+     }
+
+     useEffect(() => {
+          const abortCont = new AbortController();
+          
+          fetchQuotes(abortCont.signal);
+
+          return () => abortCont.abort();
+     }, []);
+
+
+
   return (
     <Layout pageTitle="Home">
       <div className={styles.landingWrapper}>
@@ -34,18 +79,22 @@ const Home: NextPage = () => {
           <h1 className="text-size-2 font-bold text-dark-1">Keep up your spirit with encouraging quotes</h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mt-12">
-            <div className="col-span-1">
-              <QuoteCard category="Achievement" id="1" quote="Don’t stop when you’re tired. Stop when you’re done." author="Wesley Snipes" />
-            </div>
-            <div className="col-span-1">
-              <QuoteCard category="Achievement" id="2" quote="Your time is limited, so don’t waste it living someone els..." author="Steve Jobs" />
-            </div>
-            <div className="col-span-1">
-              <QuoteCard category="Achievement" id="3" quote="People begin to become successful the minute they are bla bla bla bla" author="Harvey Mackay" />
-            </div>
-            <div className="col-span-1">
-              <QuoteCard category="Achievement" id="4" quote="Don’t count the days, make the days count." author="Muhammad Ali" />
-            </div>
+            {
+              quotes ? quotes.map(quote => {
+                return (
+                  <div className="col-span-1" key={quote._id}>
+                    <QuoteCard category={quote.category} id={quote._id} quote={quote.text} author={quote.user.name.first + " " + quote.user.name.last}
+                    isConfirmed={quote.isConfirmed} />
+                  </div>
+                )
+              })
+              : 
+              <div className="col-span-2 text-center">
+                <Gap height={30} />
+                <Loader />
+                <Gap height={30} />
+              </div>
+            }
           </div>
 
           <div className="flex justify-end mt-6">
@@ -74,14 +123,14 @@ const Home: NextPage = () => {
           <h1 className="text-size-2 font-bold text-dark-1">Read these articles to keep your happiness</h1>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-7 mt-12 items-start">
             <div className="col-span-1">
-              <ArticleCard id="1" title="3 Steps to encourage
+              <ArticleCard category="A" id="1" title="3 Steps to encourage
             yourself while in down situation" author="Vincent Hadinata" date="09-09-2021" />
             </div>
             <div className="col-span-1">
-              <ArticleCard id="2" title="Feel insecure to the others? Do these things to overcome it" author="Vincent" date="09-09-2021" />
+              <ArticleCard category="A" id="2" title="Feel insecure to the others? Do these things to overcome it" author="Vincent" date="09-09-2021" />
             </div>
             <div className="col-span-1">
-              <ArticleCard id="3" title="10 tips to make your life better" author="Vincent" date="09-09-2021" />
+              <ArticleCard category="A" id="3" title="10 tips to make your life better" author="Vincent" date="09-09-2021" />
             </div>
           </div>
           <div className="flex justify-end mt-6">

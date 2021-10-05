@@ -15,27 +15,48 @@ const Comment = (props) => {
      return (
           <Fragment key={comment._id}>
                <Gap height={20} />
-               <div className={editId !== comment._id ? "flex justify-between" : ""}>
-                    <div className="flex items-start">
-                         <img src={comment.user.photo} className="rounded-full w-12 h-12" alt={comment._id} />
-                         <Gap width={20} />
-                         <div>
-                              <div className="flex items-center">
-                                   <h1 className="text-size-6 font-bold text-blue-1">{comment.user.name.first + " " + comment.user.name.last}</h1>
+               <div className="grid grid-cols-12 items-start justify-between">
+                    <div className="col-span-12 lg:col-span-9">
+                         <div className="flex items-start">
+                              <img src={comment.user.photo ? comment.user.photo : "/assets/images/defaultProfilePhoto.jpg"} className="rounded-full w-12 h-12" alt={comment._id} />
+                              <Gap width={20} />
+                              <div>
+                                   <div className="flex items-center">
+                                        <h1 className="text-size-6 font-bold text-blue-1">{comment.user.name.first + " " + comment.user.name.last}</h1>
+                                        {
+                                             comment.isEdited && 
+                                             <Fragment>
+                                                  <Gap width={10} />
+                                                  <small className="text-gray-1">Edited</small>
+                                             </Fragment>
+                                        }
+                                   </div>
                                    {
-                                        comment.isEdited && 
+                                        editId !== comment._id &&
                                         <Fragment>
-                                             <Gap width={10} />
-                                             <small className="text-gray-1">Edited</small>
+                                             <Gap height={5} />
+                                             <p className="text-dark-1">{comment.text}</p>
                                         </Fragment>
                                    }
                               </div>
-                              {
-                                   editId !== comment._id &&
-                                   <p className="text-dark-1">{comment.text}</p>
-                              }
                          </div>
                     </div>
+                    <div className="col-span-12 lg:col-span-3">
+                         {
+                              userId && comment.user._id === userId && editId !== comment._id &&
+                              <div className="flex justify-end">
+                                   <p className="text-gray-1">{new Date(comment.createdAt).toLocaleString('en-US',{day: "numeric", month: "long", year: "numeric"})}</p>
+                                        <Fragment>
+                                             <Gap width={15} />
+                                             <FontAwesomeIcon icon={faEdit} size="lg" className="text-gray-600 cursor-pointer" onClick={() => handleEditComment(comment._id, comment.text) } />
+                                             <Gap width={10} />
+                                             <FontAwesomeIcon icon={faTrash} size="lg" className="text-red-500 cursor-pointer" onClick={() => handleDeleteComment(comment._id)} />
+                                        </Fragment>
+                              </div>
+                         }
+                    </div>
+               </div>
+               <div className={editId !== comment._id ? "flex justify-between" : ""}>
                     {
                          editId === comment._id &&
                          <div>
@@ -48,18 +69,6 @@ const Comment = (props) => {
                                    <Gap width={10} />
                                    <Button type={2} title="Update" isLoading={buttonLoading ? true : false} onClick={handleUpdateComment} />
                               </div>
-                         </div>
-                    }
-                    {
-                         userId && comment.user._id === userId && editId !== comment._id &&
-                         <div className="flex">
-                              <p className="text-gray-1">{new Date(comment.createdAt).toLocaleString('en-US',{day: "numeric", month: "long", year: "numeric"})}</p>
-                                   <Fragment>
-                                        <Gap width={15} />
-                                        <FontAwesomeIcon icon={faEdit} size="lg" className="text-gray-600 cursor-pointer" onClick={() => handleEditComment(comment._id, comment.text) } />
-                                        <Gap width={10} />
-                                        <FontAwesomeIcon icon={faTrash} size="lg" className="text-red-500 cursor-pointer" onClick={() => handleDeleteComment(comment._id)} />
-                                   </Fragment>
                          </div>
                     }
                </div>

@@ -71,7 +71,12 @@ const NewQuote = () => {
                };
      
                const res = await fetch(urlAPI + "/v1/quotes/add", options);
-               return res;
+               
+               if(!res.ok){
+                    throw Error("Submit error");
+               }else{
+                    return res;
+               }
           }
 
           setButtonLoading(true);
