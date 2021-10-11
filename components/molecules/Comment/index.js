@@ -42,18 +42,18 @@ const Comment = (props) => {
                          </div>
                     </div>
                     <div className="col-span-12 lg:col-span-3">
-                         {
-                              userId && comment.user._id === userId && editId !== comment._id &&
-                              <div className="flex justify-end">
-                                   <p className="text-gray-1">{new Date(comment.createdAt).toLocaleString('en-US',{day: "numeric", month: "long", year: "numeric"})}</p>
-                                        <Fragment>
-                                             <Gap width={15} />
-                                             <FontAwesomeIcon icon={faEdit} size="lg" className="text-gray-600 cursor-pointer" onClick={() => handleEditComment(comment._id, comment.text) } />
-                                             <Gap width={10} />
-                                             <FontAwesomeIcon icon={faTrash} size="lg" className="text-red-500 cursor-pointer" onClick={() => handleDeleteComment(comment._id)} />
-                                        </Fragment>
-                              </div>
-                         }
+                         <div className="flex justify-end">
+                              <p className="text-gray-1">{new Date(comment.createdAt).toLocaleString('en-US',{day: "numeric", month: "long", year: "numeric"})}</p>
+                              {
+                                   userId && comment.user._id === userId && editId !== comment._id &&
+                                   <Fragment>
+                                        <Gap width={15} />
+                                        <FontAwesomeIcon icon={faEdit} size="lg" className="text-gray-600 cursor-pointer" onClick={() => handleEditComment(comment._id, comment.text) } />
+                                        <Gap width={10} />
+                                        <FontAwesomeIcon icon={faTrash} size="lg" className="text-red-500 cursor-pointer" onClick={() => handleDeleteComment(comment._id)} />
+                                   </Fragment>
+                              }
+                         </div>
                     </div>
                </div>
                <div className={editId !== comment._id ? "flex justify-between" : ""}>
