@@ -16,8 +16,8 @@ import Swal from "sweetalert2";
 
 const NewConsultation = () => {
 
-     const urlAPI = "http://localhost:4000";
-     // const urlAPI = "https://bilikmental-api.vercel.app";
+     // const urlAPI = "http://localhost:4000";
+     const urlAPI = "https://bilikmental-api.vercel.app";
 
      const [isLoading, setIsLoading] = useState(true);
      const [buttonLoading, setButtonLoading] = useState(false);
