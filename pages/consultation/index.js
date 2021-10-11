@@ -163,7 +163,7 @@ const UserConsultation = () => {
      }
 
      return (
-          <Layout pageTitle="My Quotes">
+          <Layout pageTitle="Consultation">
                {/* HEADER */}
                <div className={styles.subHeader}>
                </div>
@@ -172,7 +172,7 @@ const UserConsultation = () => {
                          <div className={styles.content}>
                               <h1 className="text-size-2 font-bold text-white">Welcome, {userName ? userName : ''}</h1>
                               <Gap height={20} />
-                              <SubPageCard options={dashboardOptions} selectedOption={"My Quotes"} handleSetOption={(option) => handleSetOption(option)} />
+                              <SubPageCard options={dashboardOptions} selectedOption={"Consultation"} handleSetOption={(option) => handleSetOption(option)} />
                               <Gap height={40} />
                               <div className="flex justify-between items-center">
                                    <h1 className="text-size-3 font-bold">Consultation</h1>

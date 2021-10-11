@@ -221,7 +221,7 @@ const NewConsultation = () => {
                <div className={styles.subHeader}>
                </div>
                <div className={styles.contentWrapper}>
-                    <div className="container mx-auto px-4 lg:px-12">
+                    <div className="container mx-auto px-4 lg:px-12"> 
                          <div className={styles.content}>
                               <h1 className="text-size-2 font-bold text-white">Welcome, {userName ? userName : ''}</h1>
                               <Gap height={20} />
