@@ -176,8 +176,8 @@ const MeditationDetail = () => {
                                         {
                                              meditationSteps.map((meditationStep) => {
                                                   return (
-                                                       <Fragment>
-                                                            <MeditationStepCard step={meditationStep.step} 
+                                                       <Fragment key={meditationStep._id}>
+                                                            <MeditationStepCard step={meditationStep.step} key={meditationStep._id}
                                                             status={userMeditation.currentStep < meditationStep.step ?  3  
                                                             : userMeditation.currentStep === meditationStep.step ? 2 : 1} name={meditationStep.name}
                                                             video={meditationStep.video} resourceFile={meditationStep.resourceFile} onDone={handleDone} />

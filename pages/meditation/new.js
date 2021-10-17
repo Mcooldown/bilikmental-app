@@ -192,8 +192,8 @@ const NewMeditation = () => {
                                              meditations && meditations.data.length > 0 ?
                                              meditations.data.map(meditation => {
                                                   return (
-                                                       <Fragment>
-                                                            <MeditationCard id={meditation._id} name={meditation.name} description={meditation.description} image={meditation.image}
+                                                       <Fragment key={meditation._id}>
+                                                            <MeditationCard key={meditation._id} id={meditation._id} name={meditation.name} description={meditation.description} image={meditation.image}
                                                             videoProvided={meditation.withVideo} time={meditation.duration + " " + meditation.durationType} onClick={() => enrollMeditation(meditation._id)} />
                                                             
                                                             <Gap height={30} />
