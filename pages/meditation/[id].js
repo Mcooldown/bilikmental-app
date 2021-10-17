@@ -190,7 +190,7 @@ const MeditationDetail = () => {
                                              userMeditation.currentStep > userMeditation.totalStep &&
                                              <Fragment>
                                                   <Gap height={20} />
-                                                  <h1 className="text-size-5 font-bold text-center text-gray-1">You've completed this meditation</h1>
+                                                  <h1 className="text-size-5 font-bold text-center text-gray-1">You&apos;ve completed this meditation</h1>
                                              </Fragment>
                                         }
                                    </Fragment>
