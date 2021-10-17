@@ -64,8 +64,8 @@ const NewConsultation = () => {
 
      const handleSetOption = (value) => {
           if(value === "Profile") router.push('/profile');
-          else if(value === "Consultation") router.push('/consultation');
-          else if(value === "Meditation") router.push('/meditation');
+          else if(value === "Consultation") router.push('/consultation/my');
+          else if(value === "Meditation") router.push('/meditation/my');
           else if(value === "My Quotes") router.push('/quotes/my');
           else if(value === "My Articles") router.push('/articles/my');
      }
@@ -207,7 +207,7 @@ const NewConsultation = () => {
                submitConsultation().then(() =>{
                     Swal.fire({ icon: 'success', title: 'Success', text: 'New Consultation Created', confirmButtonColor: '#278AFF', confirmButtonText: 'OK', timer: 5000, })
                     .then(() => {
-                         router.push('/consultation');
+                         router.push('/consultation/my');
                     });
                });
           }else{
@@ -229,7 +229,7 @@ const NewConsultation = () => {
                               <Gap height={40} />
                               <div className="flex justify-between items-center">
                                    <h1 className="text-size-3 font-bold">New Consultation</h1>
-                                   <div className="inline-flex items-center cursor-pointer" onClick={() => router.push('/consultation')}>
+                                   <div className="inline-flex items-center cursor-pointer" onClick={() => router.push('/consultation/my')}>
                                         <FontAwesomeIcon icon={faLongArrowAltLeft} size="lg" className="text-gray-1 mr-3" />
                                         <span className="text-gray-1">Back to Consultation</span>
                                    </div>

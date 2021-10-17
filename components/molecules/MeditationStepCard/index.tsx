@@ -12,11 +12,13 @@ interface propsObj {
      description?: string,
      resourceFile?: string,
      video?: string,
+     onDone: VoidFunction,
+     isLoading?: boolean,
 }
 
 const MeditationStepCard = (props: propsObj) => {
 
-     const { step, status, name, description, resourceFile, video } = props;
+     const { step, status, name, description, resourceFile, video, onDone, isLoading } = props;
 
      return (
           <div className="card-shadow px-8 py-6">
@@ -71,7 +73,7 @@ const MeditationStepCard = (props: propsObj) => {
                          <hr />
                          <Gap height={15} />
                          <div className="flex justify-end">
-                              <Button type={2} title="I'm Done" onClick={() => router.push('/meditation/detail')} />
+                              <Button type={2} title="I'm Done" onClick={onDone} disabled={isLoading} isLoading={isLoading} />
                          </div>
 
                     </Fragment>

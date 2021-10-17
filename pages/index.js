@@ -141,7 +141,7 @@ const Home = () => {
             <div className="col-span-1">
               <h1 className="text-size-2 font-bold text-dark-1">Let us know your problems</h1>
               <p className="text-gray-1 my-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra tincidunt aliquet eget sit non. Nisl aliquam elementum scelerisque neque hendrerit mauris non non quis. Laoreet sit integer ultrices quis. Arcu neque, aliquet eleifend bibendum viverra.</p>
-              <Button type={2} title="Consult Now" onClick={() => router.push('/consultation')} />
+              <Button type={2} title="Consult Now" onClick={() => router.push('/consultation/my')} />
             </div>
           </div>
         </div>
@@ -179,7 +179,7 @@ const Home = () => {
             <div className="col-span-1 lg:order-1">
               <h1 className="text-size-2 font-bold text-white">“Meditation is like a gym in which you develop the powerful mental muscles of calm and insight.”</h1>
               <p className="text-white my-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor</p>
-              <Button type={1} title="Join Meditation" onClick={() => router.push('/meditation')} />
+              <Button type={1} title="Join Meditation" onClick={() => router.push('/meditation/my')} />
             </div>
           </div>
         </div>

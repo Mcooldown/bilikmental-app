@@ -21,17 +21,13 @@ const MeditationCard = (props: propsMeditation) => {
           <div className={"card-shadow p-8"}>
                <div className="grid grid-cols-12 gap-7 items-center">
                     <div className="col-span-12 lg:col-span-3">
-                         <img src={image ? image : "/assets/images/commentSample.jpg"} className="w-full h-48 object-cover rounded-xl" alt="imageMeditation" />
+                         <img src={image ? image : "/assets/images/articleDefault.png"} className="w-full h-48 object-cover rounded-xl" alt="imageMeditation" />
                     </div>
                     <div className="col-span-12 lg:col-span-9">
                          <h1 className="text-blue-1 text-size-4 font-bold">{name}</h1>
                          <Gap height={5} />
 
                          <p className={"text-gray-1 " + styles.description}>{description ? description : "No description available"}
-                              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur libero ea iste molestias quia quam vero adipisci inventore neque qui error, cum architecto obcaecati eaque delectus dolore dicta eveniet numquam.
-                              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur eos error mollitia reprehenderit in eveniet eum, quisquam accusantium magnam repellendus at temporibus ex quo? Et nobis laudantium a veniam culpa?
-                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, iusto natus. Est nulla minima voluptas consequatur aliquam ipsam provident sed maiores facilis odit quod exercitationem, voluptatibus doloribus, veritatis animi eum!
-                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit blanditiis, natus est odio reiciendis incidunt iure deserunt hic nemo, commodi quod eaque dignissimos magnam autem! Quaerat sed laborum perspiciatis deleniti.
                          </p>
                          <Gap height={20} />
                          <div className="flex justify-between">

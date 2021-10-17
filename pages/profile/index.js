@@ -62,8 +62,8 @@ const Profile = () => {
 
      const handleSetOption = (value) => {
           if(value === "Profile") router.push('/profile');
-          else if(value === "Consultation") router.push('/consultation');
-          else if(value === "Meditation") router.push('/meditation');
+          else if(value === "Consultation") router.push('/consultation/my');
+          else if(value === "Meditation") router.push('/meditation/my');
           else if(value === "My Quotes") router.push('/quotes/my');
           else if(value === "My Articles") router.push('/articles/my');
      }
